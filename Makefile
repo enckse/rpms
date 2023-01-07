@@ -10,6 +10,7 @@ all:
 	$(error "pick target")
 
 $(TARGETS):
+	echo $(TOOLBOX) | grep -q '^rpms$$'
 	cd SPECS && spectool -g -R $@.spec
 	sha256sum $(shell find SOURCES/ -type f -path "*/$@*" | sort) > $(VERIFY)
 	diff -u VERIFY/$@.sums $(VERIFY)
