@@ -1,0 +1,26 @@
+diff --git a/stagit-index.c b/stagit-index.c
+index 735775b..c548b69 100644
+--- a/stagit-index.c
++++ b/stagit-index.c
+@@ -85,7 +85,7 @@ printtimeshort(FILE *fp, const git_time *intime)
+ 	time_t t;
+ 	char out[32];
+ 
+-	t = (time_t)intime->time;
++	t = (time_t)intime->time + (intime->offset * 60);
+ 	if (!(intm = gmtime(&t)))
+ 		return;
+ 	strftime(out, sizeof(out), "%Y-%m-%d %H:%M", intm);
+diff --git a/stagit.c b/stagit.c
+index 2a9c3fe..47900aa 100644
+--- a/stagit.c
++++ b/stagit.c
+@@ -489,7 +489,7 @@ printtimeshort(FILE *fp, const git_time *intime)
+ 	time_t t;
+ 	char out[32];
+ 
+-	t = (time_t)intime->time;
++	t = (time_t)intime->time + (intime->offset * 60);
+ 	if (!(intm = gmtime(&t)))
+ 		return;
+ 	strftime(out, sizeof(out), "%Y-%m-%d %H:%M", intm);

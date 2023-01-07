@@ -1,0 +1,9 @@
+*/
+!SPECS/
+!SOURCES/
+SOURCES/*
+!SOURCES/*
+SOURCES/*.*
+!SOURCES/*.patch
+!VERIFY/
+VERIFY/sources
