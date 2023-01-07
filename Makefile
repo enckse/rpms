@@ -17,3 +17,4 @@ $(TARGETS):
 	cd SRPMS && mock -r $(CONFIG) --rebuild $@-*
 	cp $(BUILT)*.rpm $(REPO)
 	mv $(REPO)*.src.rpm $(SRCREPO)
+	rpmlint -r VERIFY/$@.rpmlint --strict $(REPO)$@-*
