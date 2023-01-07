@@ -18,4 +18,5 @@ $(TARGETS):
 	cd SRPMS && mock -r $(CONFIG) --rebuild $@-*
 	cp $(BUILT)*.rpm $(REPO)
 	mv $(REPO)*.src.rpm $(SRCREPO)
+	find $(REPO) -type f -name "*-debugsource-*" -delete
 	rpmlint -r VERIFY/$@.rpmlint --strict $(REPO)$@-*

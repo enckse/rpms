@@ -11,6 +11,7 @@ Patch1:			stagit-time.patch
 
 BuildRequires:  libgit2-devel
 BuildRequires:  gcc
+BuildRequires:  make
 Requires:       git
 
 %description
