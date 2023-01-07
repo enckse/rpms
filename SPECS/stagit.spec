@@ -17,16 +17,13 @@ Requires:       git
 %description
 Static site generator for git version control
 
-%global debug_package %{nil}
 %prep
 %autosetup
-
 
 %build
 export CFLAGS="%{optflags} -fpie -fpic -shared" 
 export LDFLAGS="%{build_ldflags} -Wl,-pie"
 %make_build
-/usr/bin/strip --strip-all stagit stagit-index
 
 %install
 %make_install DESTDIR="$RPM_BUILD_ROOT" MANPREFIX="%{_mandir}" PREFIX="%{_prefix}"
