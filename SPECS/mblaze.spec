@@ -20,8 +20,7 @@ interacting with mail messages which are stored in maildir folders
 %autosetup
 
 %build
-export CFLAGS="%{optflags} -fpie -fpic -shared" 
-export LDFLAGS="%{build_ldflags} -Wl,-pie"
+%set_build_flags
 %make_build
 
 %install
