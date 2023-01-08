@@ -18,6 +18,7 @@ isync stagit mblaze:
 	make _build TARGET=$@
 
 _build:
+	mkdir -p BUILD BUILDROOT RPMS SRPMS
 	echo $(TOOLBOX) | grep -q '^rpms$$'
 	rm -f SRPMS/$(TARGET)*
 	cd SPECS && spectool -g -R $(TARGET).spec
