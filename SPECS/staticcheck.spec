@@ -12,7 +12,10 @@ BuildRequires:  git
 BuildRequires:  make
 
 %description
-In-depth go source code static analyzer and checker
+Staticcheck is a state of the art linter for the Go
+programming language. Using static analysis, it finds
+bugs and performance issues, offers simplifications, 
+and enforces style rules.
 
 %global debug_package %{nil}
 %prep

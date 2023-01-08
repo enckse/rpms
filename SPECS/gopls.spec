@@ -12,7 +12,8 @@ BuildRequires:  git
 BuildRequires:  make
 
 %description
-An implementation of the Language Server Protocol for Go
+gopls is the official Go language server developed by the Go team.
+It provides IDE features to any LSP-compatible editor.
 
 %global debug_package %{nil}
 %prep
