@@ -8,7 +8,7 @@ SRCREPO := $(REPO)/src/
 all:
 	$(error "pick target")
 
-revive filebrowser:
+staticcheck revive filebrowser:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
 
 isync stagit mblaze:
