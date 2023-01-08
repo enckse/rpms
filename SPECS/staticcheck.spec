@@ -7,6 +7,7 @@ License:        MIT
 URL:            https://github.com/dominikh/go-tools
 Source:         https://github.com/dominikh/go-tools/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  go
+BuildRequires:  git
 
 %description
 In-depth go source code static analyzer and checker

@@ -7,6 +7,7 @@ License:        MIT
 URL:            https://github.com/mgechev/revive
 Source:         https://github.com/mgechev/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  go
+BuildRequires:  git
 
 %description
 An improved golint and general go analyzer system
