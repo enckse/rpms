@@ -6,8 +6,10 @@ Summary:        Performs static checking against go projects
 License:        MIT
 URL:            https://github.com/dominikh/go-tools
 Source:         https://github.com/dominikh/go-tools/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
+BuildRequires:  make
 
 %description
 In-depth go source code static analyzer and checker
@@ -15,14 +17,10 @@ In-depth go source code static analyzer and checker
 %global debug_package %{nil}
 %prep
 %autosetup -n go-tools-%{version}
+cp %{SOURCE1} .
 
 %build
-export CGO_CFLAGS="%{optflags}" 
-export CGO_LDFLAGS="%{build_ldflags}"
-export CGO_CPPFLAGS="%{optflags}"
-export CGO_CXXFLAGS="%{optflags}"
-go build -trimpath -buildmode=pie -mod=readonly -modcacherw -buildvcs=false -ldflags=-linkmode=external -o bin/staticcheck ./cmd/staticcheck
-strip --strip-all bin/staticcheck
+make -f go.Makefile BINARY=bin/staticcheck SRC=./cmd/staticcheck
 
 %install
 rm -rf $RPM_BUILD_ROOT

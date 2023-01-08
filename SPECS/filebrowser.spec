@@ -6,8 +6,10 @@ Summary:        Web-based file browser application
 License:        Apache-2.0
 URL:            https://filebrowser.org
 Source:         https://github.com/filebrowser/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  npm
+BuildRequires:  make
 
 %description
 Filebrowser provides a file managing interface within a specified directory and 
@@ -18,6 +20,7 @@ It can be used as a standalone app.
 %global debug_package %{nil}
 %prep
 %autosetup
+cp %{SOURCE1} .
 
 %build
 export NODE_OPTIONS="--openssl-legacy-provider"
@@ -26,8 +29,7 @@ npm install
 npm update
 npm run build
 cd ..
-go build -trimpath -buildmode=pie -mod=readonly -modcacherw -buildvcs=false
-strip --strip-all filebrowser
+make -f go.Makefile BINARY=filebrowser
 
 %install
 rm -rf $RPM_BUILD_ROOT

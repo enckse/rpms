@@ -5,9 +5,11 @@ Summary:        An improved go lint runner
 
 License:        MIT
 URL:            https://github.com/mgechev/revive
-Source:         https://github.com/mgechev/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/mgechev/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
+BuildRequires:  make
 
 %description
 An improved golint and general go analyzer system
@@ -15,14 +17,10 @@ An improved golint and general go analyzer system
 %global debug_package %{nil}
 %prep
 %autosetup
+cp %{SOURCE1} .
 
 %build
-export CGO_CFLAGS="%{optflags}" 
-export CGO_LDFLAGS="%{build_ldflags}"
-export CGO_CPPFLAGS="%{optflags}"
-export CGO_CXXFLAGS="%{optflags}"
-go build -trimpath -buildmode=pie -mod=readonly -modcacherw -buildvcs=false -ldflags=-linkmode=external
-strip --strip-all revive
+make -f go.Makefile BINARY=revive MORE_FLAGS="-ldflags=-linkmode=external"
 
 %install
 rm -rf $RPM_BUILD_ROOT
