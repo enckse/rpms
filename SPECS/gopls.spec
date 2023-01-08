@@ -17,8 +17,8 @@ An implementation of the Language Server Protocol for Go
 %autosetup -n tools-gopls-v%{version}/gopls
 
 %build
-export CGO_CFLAGS="%{optflags} -fpie -fpic -shared" 
-export CGO_LDFLAGS="%{build_ldflags} -Wl,-pie"
+export CGO_CFLAGS="%{optflags}" 
+export CGO_LDFLAGS="%{build_ldflags}"
 export CGO_CPPFLAGS="%{optflags}"
 export CGO_CXXFLAGS="%{optflags}"
 go build -trimpath -buildmode=pie -mod=readonly -modcacherw -buildvcs=false -ldflags=-linkmode=external -o gopls
