@@ -2,7 +2,7 @@ VERIFY  := VERIFY/sources
 RELEASE := alma+epel-9-x86_64
 CONFIG  := /etc/mock/$(RELEASE).cfg
 BUILT   := /var/lib/mock/$(RELEASE)/result/
-REPO    := $(HOME)/.store/pkgs/rpms/
+REPO    := $(RPMS_STORE)/
 SRCREPO := $(REPO)/src/
 
 all:
