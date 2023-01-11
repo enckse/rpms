@@ -8,7 +8,7 @@ SRCREPO := $(REPO)/src/
 all:
 	$(error "pick target")
 
-staticcheck revive gopls:
+staticcheck revive gopls lockbox:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
 
 filebrowser:
