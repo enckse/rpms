@@ -1,3 +1,0 @@
-addFilter('no-manual-page-for-binary')
-addFilter('invalid-license')
-addFilter('files-duplicate')

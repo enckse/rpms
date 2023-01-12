@@ -14,7 +14,7 @@ staticcheck revive gopls lockbox goyq helix:
 filebrowser:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
 
-isync stagit mblaze:
+isync stagit:
 	make _build TARGET=$@
 
 _build:
