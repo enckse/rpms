@@ -1,5 +1,5 @@
 Name:           goyq
-Version:        4.30.6
+Version:        4.30.7
 Release:        1%{?dist}
 Summary:        A yq implementation in Go
 
