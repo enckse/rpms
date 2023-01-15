@@ -8,7 +8,9 @@ SRCREPO := $(REPO)/src/
 all:
 	$(error "pick target")
 
-repo:
+metadata:
+	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls SPECS/ | wc -l) ]; then echo "rpm/specs count mismatch"; exit 1; fi
+	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
 
 staticcheck revive gopls lockbox goyq helix:
