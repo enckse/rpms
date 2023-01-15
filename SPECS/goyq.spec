@@ -1,5 +1,5 @@
 Name:           goyq
-Version:        4.30.7
+Version:        4.30.8
 Release:        1%{?dist}
 Summary:        A yq implementation in Go
 
@@ -31,6 +31,8 @@ install -Dm755 yq $RPM_BUILD_ROOT/%{_bindir}/yq
 %{_bindir}/yq
 
 %changelog
+* Sun Jan 15 2023 Sean Enck <enckse@voidedtech.com> - 4.30.8-1
+- Upstream update
 * Sat Jan 14 2023 Sean Enck <enckse@voidedtech.com> - 4.30.7-1
 - Upstream update
 * Wed Jan 11 2023 Sean Enck <enckse@voidedtech.com> - 4.30.6-1
