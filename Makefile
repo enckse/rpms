@@ -8,6 +8,9 @@ SRCREPO := $(REPO)/src/
 all:
 	$(error "pick target")
 
+repo:
+	createrepo $(REPO)
+
 staticcheck revive gopls lockbox goyq helix:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
 
