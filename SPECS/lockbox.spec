@@ -1,7 +1,7 @@
 %{?!bash_completions_dir:%global bash_completions_dir %{_datadir}/bash-completion/completions}
 
 Name:           lockbox
-Version:        22.12.05
+Version:        23.01.00
 Release:        1%{?dist}
 Summary:        Password manager/storage
 
@@ -40,5 +40,7 @@ install -Dpm644 lb.bash $RPM_BUILD_ROOT/%{bash_completions_dir}/lb
 %{bash_completions_dir}/lb
 
 %changelog
+* Tue Jan 17 2023 Sean Enck <enckse@voidedtech.com> - 23.01.00-1
+- Updated version
 * Wed Jan 11 2023 Sean Enck <enckse@voidedtech.com> - 22.12.05-1
 - Initial revision
