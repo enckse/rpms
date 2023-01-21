@@ -2,7 +2,7 @@
 
 Name:           lockbox
 Version:        23.01.02
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Password manager/storage
 
 License:        GPLv3
@@ -36,7 +36,7 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_bindir} $RPM_BUILD_ROOT/%{_mandir}/man1
 install -Dm755 lb $RPM_BUILD_ROOT/%{_bindir}/lb
 install -Dm644 lb.bash $RPM_BUILD_ROOT/%{bash_completions_dir}/lb
-install -Dm644 lb.man $RPM_BUILD_ROOT/%{_mandir}/man1/lb
+install -Dm644 lb.man $RPM_BUILD_ROOT/%{_mandir}/man1/lb.1
 
 %files
 %{_bindir}/lb
@@ -44,6 +44,8 @@ install -Dm644 lb.man $RPM_BUILD_ROOT/%{_mandir}/man1/lb
 %{_mandir}/man1/lb*
 
 %changelog
+* Sat Jan 21 2023 Sean Enck <enckse@voidedtech.com> - 23.01.02-3
+- Fixing manpages
 * Sat Jan 21 2023 Sean Enck <enckse@voidedtech.com> - 23.01.02-2
 - Including manpages
 * Sat Jan 21 2023 Sean Enck <enckse@voidedtech.com> - 23.01.02-1
