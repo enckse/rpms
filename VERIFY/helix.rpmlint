@@ -1,3 +1,0 @@
-addFilter('no-manual-page-for-binary')
-addFilter('files-duplicate')
-addFilter('no-documentation')
