@@ -19,7 +19,7 @@ staticcheck gopls lockbox goyq efmlsp:
 filebrowser:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
 
-isync stagit khal:
+isync stagit:
 	make _build TARGET=$@
 
 _build:
