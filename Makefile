@@ -9,6 +9,7 @@ all:
 	$(error "pick target")
 
 metadata:
+	@which createrepo
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls SPECS/ | wc -l) ]; then echo "rpm/specs count mismatch"; exit 1; fi
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
@@ -24,7 +25,7 @@ isync stagit:
 
 _build:
 	mkdir -p BUILD BUILDROOT RPMS SRPMS
-	echo $(TOOLBOX) | grep -q '^rpms$$'
+	@which spectool
 	rm -f SRPMS/$(TARGET)*
 	cd SPECS && spectool -g -R $(TARGET).spec
 	sha256sum SOURCES/$(TARGET)* > $(VERIFY)
