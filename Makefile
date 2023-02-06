@@ -14,7 +14,7 @@ metadata:
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
 
-staticcheck gofumpt gopls lockbox goyq efmlsp:
+staticcheck gofumpt gopls lockbox goyq efmlsp revive:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
 
 filebrowser:
