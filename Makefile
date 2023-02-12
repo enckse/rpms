@@ -17,7 +17,7 @@ metadata:
 staticcheck gofumpt gopls lockbox goyq efmlsp revive:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
 
-isync:
+isync stagit:
 	make _build TARGET=$@
 
 _build:
