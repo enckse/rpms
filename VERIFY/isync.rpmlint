@@ -1,2 +1,0 @@
-addFilter('crypto-policy-non-compliance-openssl')
-addFilter('no-manual-page-for-binary')

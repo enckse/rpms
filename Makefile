@@ -17,9 +17,6 @@ metadata:
 staticcheck gofumpt gopls lockbox efmlsp revive:
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
 
-isync:
-	make _build TARGET=$@
-
 _build:
 	mkdir -p BUILD BUILDROOT RPMS SRPMS
 	@which spectool
