@@ -1,9 +1,10 @@
 VERIFY  := VERIFY/sources
-RELEASE := alma+epel-9-x86_64
+RELEASE := fedora-37-x86_64
 CONFIG  := /etc/mock/$(RELEASE).cfg
 BUILT   := /var/lib/mock/$(RELEASE)/result/
-REPO    := $(RPMS_STORE)/
+REPO    := $(PKGS_STORE)/rpms/
 SRCREPO := $(REPO)/src/
+SPECS   := $(shell ls SPECS/ | sed 's/\.spec//g')
 
 all:
 	$(error "pick target")
@@ -14,8 +15,8 @@ metadata:
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
 
-staticcheck gofumpt gopls lockbox efmlsp revive:
-	make _build TARGET=$@ MOCK_OPTIONS="--enable-network" RELEASE=fedora-37-x86_64
+$(SPECS):
+	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
 
 _build:
 	mkdir -p BUILD BUILDROOT RPMS SRPMS

@@ -1,0 +1,2 @@
+addFilter('dangerous-command-in-%postun')
+addFilter('non-conffile-in-etc')

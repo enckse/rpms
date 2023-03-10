@@ -1,8 +1,8 @@
 %{?!bash_completions_dir:%global bash_completions_dir %{_datadir}/bash-completion/completions}
 
 Name:           lockbox
-Version:        23.01.02
-Release:        3%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        Password manager/storage
 
 License:        GPLv3
@@ -28,22 +28,20 @@ cp %{SOURCE1} .
 
 %build
 make -f go.Makefile BINARY=lb SRC=cmd/main.go MORE_FLAGS="-ldflags=-linkmode=external"
-make BUILD=./ lb.man
 ./lb bash > lb.bash
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{_bindir} $RPM_BUILD_ROOT/%{_mandir}/man1
 install -Dm755 lb $RPM_BUILD_ROOT/%{_bindir}/lb
 install -Dm644 lb.bash $RPM_BUILD_ROOT/%{bash_completions_dir}/lb
-install -Dm644 lb.man $RPM_BUILD_ROOT/%{_mandir}/man1/lb.1
 
 %files
 %{_bindir}/lb
 %{bash_completions_dir}/lb
-%{_mandir}/man1/lb*
 
 %changelog
+* Fri Mar 10 2023 Sean Enck <enckse@voidedtech.com> - 1.0.0-1
+- New release
 * Sat Jan 21 2023 Sean Enck <enckse@voidedtech.com> - 23.01.02-3
 - Fixing manpages
 * Sat Jan 21 2023 Sean Enck <enckse@voidedtech.com> - 23.01.02-2

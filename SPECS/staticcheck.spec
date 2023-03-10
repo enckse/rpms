@@ -1,5 +1,5 @@
 Name:           staticcheck
-Version:        2023.1
+Version:        2023.1.2
 Release:        1%{?dist}
 Summary:        Performs static checking against go projects
 
@@ -34,6 +34,8 @@ install -Dm755 bin/staticcheck $RPM_BUILD_ROOT/%{_bindir}/staticcheck
 %{_bindir}/staticcheck
 
 %changelog
+* Fri Mar 10 2023 Sean Enck <enckse@voidedtech.com> - 2023.1.2-1
+- New release
 * Fri Feb 03 2023 Sean Enck <enckse@voidedtech.com> - 2023.1-1
 - New release
 * Sat Jan 07 2023 Sean Enck <enckse@voidedtech.com> - 2022.1.3-1
