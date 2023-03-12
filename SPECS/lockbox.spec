@@ -8,7 +8,6 @@ Summary:        Password manager/storage
 License:        GPLv3
 URL:            https://github.com/enckse/lockbox
 Source0:        https://github.com/enckse/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
 BuildRequires:  pkgconfig(bash-completion)
