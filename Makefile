@@ -16,7 +16,6 @@ metadata:
 	createrepo $(REPO)
 
 clean:
-	rm -f $(GOMAKE)
 	rm -f SOURCES/*.tar.*
 
 $(SPECS):
