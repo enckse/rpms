@@ -6,10 +6,8 @@ Summary:        An improved go lint runner
 License:        MIT
 URL:            https://github.com/mgechev/revive
 Source0:        https://github.com/mgechev/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
-BuildRequires:  make
 
 %description
 Fast, configurable, extensible, flexible, and beautiful linter for Go.
@@ -20,10 +18,10 @@ for enhancing your development & code review processes.
 %global debug_package %{nil}
 %prep
 %autosetup
-cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=revive
+go build %{_goflags} -o revive
+strip --strip-all revive
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -6,10 +6,8 @@ Summary:        Go LSP implementation
 License:        BSD
 URL:            https://github.com/golang/tools
 Source:         https://github.com/golang/tools/archive/gopls/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
-BuildRequires:  make
 
 %description
 gopls is the official Go language server developed by the Go team.
@@ -18,10 +16,10 @@ It provides IDE features to any LSP-compatible editor.
 %global debug_package %{nil}
 %prep
 %autosetup -n tools-gopls-v%{version}/gopls
-cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=gopls
+go build %{_goflags} -o gopls
+strip --strip-all gopls
 
 %install
 rm -rf $RPM_BUILD_ROOT

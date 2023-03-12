@@ -11,8 +11,6 @@ Source0:        https://github.com/enckse/%{name}/archive/v%{version}.tar.gz#/%{
 Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
-BuildRequires:  make
-BuildRequires:  help2man
 BuildRequires:  pkgconfig(bash-completion)
 
 %description
@@ -24,10 +22,10 @@ for enhancing your development & code review processes.
 %global debug_package %{nil}
 %prep
 %autosetup
-cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=lb SRC=cmd/main.go
+go build %{_goflags} -o lb cmd/main.go
+strip --strip-all lb
 ./lb bash > lb.bash
 
 %install

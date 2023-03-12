@@ -6,10 +6,8 @@ Summary:        Stricter gofmt
 License:        BSD-3-Clause
 URL:            https://github.com/mvdan/gofumpt
 Source:         https://github.com/mvdan/gofumpt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
-BuildRequires:  make
 
 %description
 Like gofmt but stricter/added formatting rules
@@ -17,10 +15,10 @@ Like gofmt but stricter/added formatting rules
 %global debug_package %{nil}
 %prep
 %autosetup
-cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=gofumpt
+go build %{_goflags} -o gofumpt
+strip --strip-all gofumpt
 
 %install
 rm -rf $RPM_BUILD_ROOT

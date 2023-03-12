@@ -6,10 +6,8 @@ Summary:        General purpose language server
 License:        MIT
 URL:            https://github.com/mattn/efm-langserver
 Source:         https://github.com/mattn/efm-langserver/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        go.Makefile
 BuildRequires:  go
 BuildRequires:  git
-BuildRequires:  make
 
 %description
 General purpose Language Server that can use specified error
@@ -19,10 +17,10 @@ This is useful for editing code with linter.
 %global debug_package %{nil}
 %prep
 %autosetup -n efm-langserver-%{version}
-cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=efm-langserver
+go build %{_goflags} -o efm-langserver
+strip --strip-all efm-langserver
 
 %install
 rm -rf $RPM_BUILD_ROOT

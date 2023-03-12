@@ -5,7 +5,6 @@ BUILT   := /var/lib/mock/$(RELEASE)/result/
 REPO    := $(PKGS_STORE)/rpms/
 SRCREPO := $(REPO)/src/
 SPECS   := $(shell ls SPECS/ | sed 's/\.spec//g')
-GOMAKE  := SOURCES/go.Makefile
 
 all:
 	$(error "pick target")
@@ -20,20 +19,10 @@ clean:
 	rm -f $(GOMAKE)
 	rm -f SOURCES/*.tar.*
 
-$(GOMAKE):
-	make .go.make | grep -v "^make" > $(GOMAKE)
-
-.go.make:
-	@echo "GOFLAGS := $(GOFLAGS)"
-	@echo
-	@echo "all:"
-	@printf "\tgo build \$$(GOFLAGS) -o \$$(BINARY) \$$(SRC)\n"
-	@printf "\tstrip --strip-all \$$(BINARY)\n"
-
 $(SPECS):
-	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
+	make _build TARGET=$@ MOCK_OPTIONS="--enable-network --define=\"_goflags $(GOFLAGS)\""
 
-_build: $(GOMAKE)
+_build:
 	mkdir -p BUILD BUILDROOT RPMS SRPMS
 	@which spectool
 	rm -f SRPMS/$(TARGET)*

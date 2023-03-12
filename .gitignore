@@ -3,8 +3,6 @@
 !SOURCES/
 SOURCES/*
 !SOURCES/*
-SOURCES/*.*
-!SOURCES/*.patch
-!SOURCES/*.conf
+SOURCES/*.tar.*
 !VERIFY/
 VERIFY/sources
