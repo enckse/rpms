@@ -24,7 +24,7 @@ $(GOMAKE):
 	make .go.make | grep -v "^make" > $(GOMAKE)
 
 .go.make:
-	@echo $(shell cat $(HOME)/.bashrc.d/20-go.dev.sh | grep GOFLAGS | cut -d ' ' -f 2- | sed 's/GOFLAGS=/GOFLAGS := /g')
+	@echo "GOFLAGS := $(GOFLAGS)"
 	@echo
 	@echo "all:"
 	@printf "\tgo build \$$(GOFLAGS) -o \$$(BINARY) \$$(SRC)\n"
