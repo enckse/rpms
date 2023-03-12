@@ -20,7 +20,7 @@ Like gofmt but stricter/added formatting rules
 cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=gofumpt MORE_FLAGS="-ldflags=-linkmode=external"
+make -f go.Makefile BINARY=gofumpt
 
 %install
 rm -rf $RPM_BUILD_ROOT

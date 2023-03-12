@@ -23,7 +23,7 @@ for enhancing your development & code review processes.
 cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=revive MORE_FLAGS="-ldflags=-linkmode=external"
+make -f go.Makefile BINARY=revive
 
 %install
 rm -rf $RPM_BUILD_ROOT

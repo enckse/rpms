@@ -27,7 +27,7 @@ for enhancing your development & code review processes.
 cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=lb SRC=cmd/main.go MORE_FLAGS="-ldflags=-linkmode=external"
+make -f go.Makefile BINARY=lb SRC=cmd/main.go
 ./lb bash > lb.bash
 
 %install

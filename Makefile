@@ -5,6 +5,7 @@ BUILT   := /var/lib/mock/$(RELEASE)/result/
 REPO    := $(PKGS_STORE)/rpms/
 SRCREPO := $(REPO)/src/
 SPECS   := $(shell ls SPECS/ | sed 's/\.spec//g')
+GOMAKE  := SOURCES/go.Makefile
 
 all:
 	$(error "pick target")
@@ -15,10 +16,20 @@ metadata:
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
 
+$(GOMAKE):
+	make .go.make | grep -v "^make" > $(GOMAKE)
+
+.go.make:
+	@echo $(shell cat $(HOME)/.bashrc.d/20-go.dev.sh | grep GOFLAGS | cut -d ' ' -f 2- | sed 's/GOFLAGS=/GOFLAGS := /g')
+	@echo
+	@echo "all:"
+	@printf "\tgo build \$$(GOFLAGS) -o \$$(BINARY) \$$(SRC)\n"
+	@printf "\tstrip --strip-all \$$(BINARY)\n"
+
 $(SPECS):
 	make _build TARGET=$@ MOCK_OPTIONS="--enable-network"
 
-_build:
+_build: $(GOMAKE)
 	mkdir -p BUILD BUILDROOT RPMS SRPMS
 	@which spectool
 	rm -f SRPMS/$(TARGET)*

@@ -22,7 +22,7 @@ This is useful for editing code with linter.
 cp %{SOURCE1} .
 
 %build
-make -f go.Makefile BINARY=efm-langserver MORE_FLAGS="-ldflags=-linkmode=external"
+make -f go.Makefile BINARY=efm-langserver
 
 %install
 rm -rf $RPM_BUILD_ROOT

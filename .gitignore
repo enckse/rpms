@@ -5,6 +5,5 @@ SOURCES/*
 !SOURCES/*
 SOURCES/*.*
 !SOURCES/*.patch
-!SOURCES/*.Makefile
 !VERIFY/
 VERIFY/sources
