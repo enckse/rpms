@@ -16,6 +16,10 @@ metadata:
 	if [ $(shell ls $(REPO)*.rpm | wc -l) -ne $(shell ls $(SRCREPO)*.rpm | wc -l) ]; then echo "src/rpm count mismatch"; exit 1; fi
 	createrepo $(REPO)
 
+clean:
+	rm -f $(GOMAKE)
+	rm -f SOURCES/*.tar.*
+
 $(GOMAKE):
 	make .go.make | grep -v "^make" > $(GOMAKE)
 
